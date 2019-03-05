@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html  lang="pl-PL">
+<head>
+
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Zderzenia sprężyste</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <link href='http://fonts.googleapis.com/css?family=Jura&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Advent+Pro&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    
+</head>
+
+<body>
+	
+	<section>
+		<h1>Zderzenia sprężyste</h1>
+		<div class="buttons">
+			<button class="centeredButton" onclick="theory()" id="theory">Teoria</button>
+			<button class="centeredButton" onclick="start()" id="restartButton">Nowa losowa animacja</button>
+			<button class="centeredButton" onclick="set()" id="setParams">Ustaw parametry</button>
+			<button class="centeredButton" onclick="renew()" id="startButton" disabled>Wznów</button>
+			<button class="centeredButton" onclick="stop()" id="stopButton" disabled>Stop</button>
+		</div>
+		<audio id="myAudio" autoplay loop>
+			 <source src="sounds/music.wav" type="audio/wav">
+			 <source src="sounds/music.mp3" type="audio/mpeg">
+		</audio>
+	</section>
+		<main class="main">	
+		<div id="paramsForm" style="display:none">
+				<form class="firstForm">
+					Podaj liczbę kulek: <i class="fas fa-info-circle"> <span class="tooltiptext">Dla najlepszego efektu animacji najlepiej jest wybrać masy kul z przedziału 20-50 oraz prędkości z przedziału 5-15.</span></i><br><br>
+					<input type="number" id="ballsNum" min="1" max="10">
+					<input type="button" value="OK" onclick="validate()">
+				</form>
+			</div>
+				<div id="extendedForm" style="display:none"></div>
+			<div id="x" style="display:none">
+				<canvas id="myCanvas"></canvas>
+			</div>
+				<article id="theoryText" style="display:none"> 
+					<h2>Zderzenie sprężyste</h2>
+					Zderzenie, w którym w stanie końcowym mamy te same cząstki (obiekty) co w stanie początkowym i zakłada się, że nie występują lub są pomijane oddziaływania z innymi ciałami. Oznacza to, że podczas zderzenia spełniona jest zasada zachowania pędu Przyjmuje się też, że oddziaływania podczas zderzenia są sprężyste dlatego energia kinetyczna jest zachowana. Zderzenie, w którym energia kinetyczna nie jest zachowana nazywa się zderzeniem niesprężystym. <br> Całkowita energia kinetyczna po zderzeniu jest równa energii kinetycznej ciał przed zderzeniem:<br><img src="images/equation.png" alt="equation1"/><br>Całkowity pęd po zderzeniu jest równy pędowi przed zderzeniem:<br> <img src="images/equation2.png" alt="equation2"/> <br>Z powyższych równań wynikają prędkości ciał po zderzeniu:<br><img src="images/equation3.png" alt="equation3"/><br><img src="images/equation4.png" alt="equation4"/>
+					<footer>Źródło: <nav><a target="_blank" rel="noopener noreferrer" href="https://pl.wikipedia.org/wiki/Zderzenie_spr%C4%99%C5%BCyste">Wikipedia</a></nav></footer>
+				</article>
+				<article id="docText" style="display:none">
+				 <h2>Projekt</h2>
+				 Został zrealizowany z wykorzystaniem języka JavaScript, CSS 3.0 oraz HTML5. Sporządzona grafika została wykonana przy pomocy elementu &lt;canvas&gt;. Do modyfikacji dokumentu HTML5 wykorzystano funkcje JavaScript takie jak: "getElementById", "innerHTML". Obsługa zdarzeń została zrealizowana za pomocą funkcji onclick(). Do dołączenia muzyki w tle wykorzystano element &lt;audio&gt;.
+					Tematyką projektu są zderzenia sprężyste. Dostępne są następujące funkcjonalności: <br><span style="color:orange">przycisk Teoria</span> - teoretyczne wyjaśnienie zderzeń sprężystych wraz z podstawowymi wzorami
+					<br><span style="color:orange">przycisk Nowa losowa animacja</span> - wywołuje funkcję start(), generuje nową animacje z wartościami masy i prędkości kulek wylosowanymi za pomocą funkcji getRandomInt(). Animacja została oparta o grafikę wykonaną przy pomocy elementu canvas. Za wyświetlanie oraz wygasanie animacji odpowiedzialne są funckję fade() oraz unfade(), które operują na własnościach styli "style.display" (właściwości: none oraz block).
+					<br><span style="color:orange">przycisk Ustaw paramtery</span> - pozwala użytkownikowi na ustawienie własnych parametrów animacji tj. ilości kulek(maksymalna ilość kulek to 10), ich masy(adekwatnej do promienia) oraz prędkości początkowych. W zależności od liczby kulek generowany jest formularz z odpowiednią ilością wierszy i wstawiany za pomocą funkcji JavaScript "innerHTML". Następuje również walidacja parametrów, tak aby animacja była możliwa. Po najechaniu na ikonke "info" wyświetli się wskazówka na temat najlepszych parametrów. Aby rozpocząć nową animację należy ponownie kliknąć w przycisk Ustaw parametry. Za wyświetlanie oraz wygasanie formularzy i animacji odpowiedzialne są funckję fade() oraz unfade(), które operują na własnościach styli "style.display" (właściwości: none oraz block).
+					<br><span style="color:orange">przycisk Wznów</span> - wznawia animacje, która została uprzednio zatrzymana przez przycisk start
+					<br><span style="color:orange">przycisk Stop</span> - powoduje zatrzymanie animacji
+					<br><span style="color:orange">boczny przycisk Dokumentacja</span> - informacje, które właśnie Państwo czytają ;)
+				</article>
+			<button class="doc" onclick="showDoc()" id="docButton">DOKUMENTACJA</button>
+			</main>
+
+			<div class="stars"></div>
+<div class="twinkling"></div>
+			
+	<script src="myscript.js" defer></script>
+</body>
+</html>
